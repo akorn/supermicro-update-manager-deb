@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUMBER_OF_FILES=`ls -1 IPMIView_V*_bundleJRE_Linux_x64_*.tar.gz 2> /dev/null | wc -l`
+NUMBER_OF_FILES=`ls -1 IPMIView_*_bundleJRE_Linux_x64.tar.gz 2> /dev/null | wc -l`
 
 if [ "$NUMBER_OF_FILES" == "0" ]
 then
@@ -17,7 +17,7 @@ then
 	exit
 fi
 
-VERSION=`ls IPMIView_V*_bundleJRE_Linux_x64_*.tar.gz | sed -r 's/IPMIView_V(.*)_bundleJRE_Linux_x64_.*\.tar\.gz/\1/'`
+VERSION=`ls IPMIView_*_bundleJRE_Linux_x64.tar.gz | sed -r 's/IPMIView_(.*)_build\..*_bundleJRE_Linux_x64\.tar\.gz/\1/'`
 
 cp debian/changelog.dist debian/changelog
 
