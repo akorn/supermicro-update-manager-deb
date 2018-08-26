@@ -1,0 +1,84 @@
+.Dd 4/20/18              
+.Dt SUPERMICRO-UPDATE-MANAGER 8 amd64
+.Os Linux
+.Nm supermicro-update-manager
+.Nd Manage Supermicro IPMI BMCs
+.Sh NAME
+  supermicro-update-manager
+.Sh SYNOPSIS
+.Nm
+.Op Fl hv
+.Op Fl i Ar host
+.Op Fl l Ar file
+.Op Fl u Ar user
+.Op Fl p Ar password
+.Op Fl c Ar COMMAND
+.Op COMMAND ARGUMENTS
+.Sh DESCRIPTION
+This command line utility allows you to interact with the IPMI BMC embedded in
+many Supermicro mainboards. It can act on several remote BMCs simulatenously,
+over the network. The version Supermicro provides can also talk to the BMC
+via a local interface which relies on a kernel driver called
+.Ar sum_bios.ko.
+.Pp 
+However, Supermicro only provides that driver in binary form and only for some
+Red Hat kernels; thus, the Debian package this man page was generated for
+doesn't include it, limiting you to talking to the BMC via the network.
+.Pp
+To act on a single system, specify the -i, -u and -p options; to act on multiple
+remote systems, specify the -l, -u and -p options.
+.Sh FLAGS
+.Bl -tag -width -indent
+.It -h
+Shows help information.
+.It -v
+Displays the verbose output.
+.It -i Ar host
+IP address or hostname to connect to.
+.It -l Ar file
+Act on systems listed in file. Refer to the user's guide for format.
+.It -u Ar user
+IPMI username.
+.It -p Ar password
+IPMI password.
+.Em Note that specifying the password on the command line is
+.Em insecure, but the program supports no other mechanism.
+.It -c Ar COMMAND
+Command to run. Command names are case insensitive.
+.El
+.Sh COMMANDS
+.Bl -tag
+.It Key Management:
+ActivateProductKey, QueryProductKey, ClearProductKey
+.It System Checks:
+CheckOOBSupport, CheckAssetInfo, CheckSystemUtilization, CheckSensorData
+.It BIOS Management:
+GetBIOSInfo, UpdateBios, GetDefaultBiosCfg, GetCurrentBiosCfg, ChangeBiosCfg, LoadDefaultBiosCfg, GetDmiInfo, ChangeDmiInfo, EditDmiInfo, SetBiosAction
+.It BMC Management:
+GetBmcInfo, UpdateBmc, GetBmcCfg, ChangeBmcCfg
+.It System Event Log:
+GetEventLog, ClearEventLog
+.It CMM Management:
+GetCmmInfo, UpdateCmm, GetCmmCfg, ChangeCmmCfg
+.It Storage Management:
+GetRaidControllerInfo, UpdateRaidController, GetRaidCfg, ChangeRaidCfg, GetSataInfo, GetNvmeInfo
+.It Applications:
+TpmProvision, MountIsoImage, UnmountIsoImage
+.El
+.Sh COMMAND USAGE
+See help message for each command. Syntax:
+.Nm
+-h -c <command name>.
+.Pp
+Command support is platform dependent. Please refer to Appendix C in 
+the user's guide for platform dependency hints.
+.Pp
+.Sh EXAMPLES
+.Nm
+-i 192.168.34.56 -u ADMIN -p "&123456" -c ChangeBmcCfg --file BmcCfg.txt
+.Pp
+.Nm
+-l IP_ADDR_RANGE.txt -u ADMIN -p "&123456" -c GetBIOSInfo --file BIOS.rom
+.Pp
+.Nm
+-h -c UpdateBios

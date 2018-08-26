@@ -1,1 +1,22 @@
-This package was debianized by Casper Langemeijer <casper@langemeijer.eu>
+This package was debianized by:
+
+	András Korn <korn-deb@elan.rulez.org>  Sun, 26 Aug 2018 19:38:05 +0200
+
+Based on work by:
+
+	Casper Langemeijer <casper@langemeijer.eu> (and possibly others).
+
+Upstream author:
+
+	Supermicro (the files created by Supermicro were added to the Debian
+	package by the person who created the package).
+
+Copyright:
+
+	© 2018 András Korn
+	© 2015 Bert Slagter
+	© 2015-2016 Casper Langemeijer
+
+License:
+	Unclear for now; please see
+	https://github.com/procurios/ipmiview-deb/issues/2

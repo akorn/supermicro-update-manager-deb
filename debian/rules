@@ -22,30 +22,16 @@ install: build
 	# Untar upstream version
 	rm -Rf $(CURDIR)/debian/untar
 	mkdir $(CURDIR)/debian/untar
-	tar --directory $(CURDIR)/debian/untar -xzf IPMIView_*_bundleJRE_Linux_x64.tar.gz
+	tar --directory $(CURDIR)/debian/untar -xzf sum_*_Linux_x86_64_*.tar.gz
 
-	# Move relevant files into usr/lib/ipmiview
-	mv $(CURDIR)/debian/untar/*/libiKVM64.so $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-	mv $(CURDIR)/debian/untar/*/libSharedLibrary64.so $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-	mv $(CURDIR)/debian/untar/*/iKVM.jar $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-	mv $(CURDIR)/debian/untar/*/iKVMMicroBlade.jar $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-	mv $(CURDIR)/debian/untar/*/JViewerX9.jar $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-	mv $(CURDIR)/debian/untar/*/IPMIView20.jar $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-	mv $(CURDIR)/debian/untar/*/TrapView.jar $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-
-    # Move relevant files into usr/lib/ipmiview
-	install -m755 $(CURDIR)/ipmiview.sh $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-	install -m755 $(CURDIR)/ikvm.sh $(CURDIR)/debian/ipmiview/usr/lib/ipmiview
-
-	install -m644 $(CURDIR)/ipmiview.png $(CURDIR)/debian/ipmiview/usr/lib/ipmiview/icon.png
-
-	# Create desktop item for menu
-	cp ipmiview.desktop $(CURDIR)/debian/ipmiview/usr/share/applications
-
-	# Create symlink in /usr/bin
-	dh_link usr/lib/ipmiview/ipmiview.sh usr/bin/ipmiview
-	dh_link usr/lib/ipmiview/ikvm.sh usr/bin/ikvm
-
+	# Move relevant files into place
+	mv $(CURDIR)/debian/untar/*/sum $(CURDIR)/debian/supermicro-update-manager/usr/lib/supermicro-update-manager/
+	mv $(CURDIR)/debian/untar/*/ExternalData $(CURDIR)/debian/supermicro-update-manager/usr/lib/supermicro-update-manager/
+	mv $(CURDIR)/debian/untar/*/SUM_UserGuide.pdf $(CURDIR)/debian/supermicro-update-manager/usr/share/doc/supermicro-update-manager/
+	cat $(CURDIR)/debian/untar/*/ReleaseNote.txt | gzip -n -9 >$(CURDIR)/debian/supermicro-update-manager/usr/share/doc/supermicro-update-manager/RELEASE_NOTES.txt.gz
+	gzip -n -9 <$(CURDIR)/supermicro-update-manager.8 >$(CURDIR)/debian/supermicro-update-manager/usr/share/man/man8/supermicro-update-manager.8.gz
+	gzip -n -9 <$(CURDIR)/debian/changelog >$(CURDIR)/debian/supermicro-update-manager/usr/share/doc/supermicro-update-manager/changelog.Debian.gz
+	install -m755 $(CURDIR)/supermicro-update-manager $(CURDIR)/debian/supermicro-update-manager/usr/sbin/
 
 binary-indep: build install
 

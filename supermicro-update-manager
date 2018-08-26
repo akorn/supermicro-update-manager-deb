@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# This is a wrapper around the 'sum' binary included with the Supermicro Update Manager.
+#
+# It's needed because 'sum' assumes its ExternalData directory is in the
+# same directory as the binary itself, which would not be FHS compliant.
+exec /usr/lib/supermicro-update-manager/sum $*

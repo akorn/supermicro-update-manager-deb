@@ -1,15 +1,24 @@
-Source: ipmiview
-Section: vcs
+Source: supermicro-update-manager
+Section: admin
 Priority: optional
 Maintainer: Casper Langemeijer <casper@langemeijer.eu>
-Build-Depends: debhelper (>= 5)
+Build-Depends: debhelper (>= 5), devscripts, libdistro-info-perl
 Standards-Version: 3.8.4
-Homepage: http://www.supermicro.nl/solutions/SMS_IPMI.cfm
+Homepage: https://www.supermicro.com/solutions/SMS_SUM.cfm
 
-Package: ipmiview
+Package: supermicro-update-manager
 Architecture: amd64
-Depends: openjdk-9-jre | openjdk-8-jre | openjdk-7-jre | oracle-java7-installer | oracle-java8-installer | oracle-java6-installer | sun-java7-jdk | sun-java8-jdk | sun-java6-jdk, libc6
+Depends: libc6
 Recommends: fonts-dejavu-core, fonts-freefont-otf, ttf-bitstream-vera, fonts-cantarell, fonts-droid, ttf-mscorefonts-installer
-Description: A GUI-based software application that allows administrators
- to manage multiple target systems through BMC. IPMIView V2.0 supports
- Supermicro’s BMCs that adheres to either IPMI v1.5 or v2.0.
+Description: Proprietary command-line utility to manager Supermicro IPMI BMCs
+ Supermicro Update Manager (SUM) can be used to manage the firmware and
+ configuration for Supermicro X9 (Romley), X10, B10, X11, B11, H11 generation
+ motherboards. SUM is a command line interface utility that can execute
+ parallel commands from a centralized management server. Two channels are
+ possible for management: the OOB (Out-Of-Band) channel, i.e. communication
+ through the BMC/IPMI interface, and the in-band channel, i.e. communication
+ through the local system interfaces. Through the OOB channel, most
+ management commands can be executed independently of the OS on the managed
+ system and even before the system OS is installed. SUM supports Linux,
+ Windows, and FreeBSD. Thin Agent Service (TAS) required for some functions.
+ Licensing: SFT-OOB-LIC or SFT-DCMS-Single required for each monitor node.
