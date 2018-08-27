@@ -25,7 +25,7 @@ apt-get install devscripts debhelper libdistro-info-perl
 Building
 --------
 
-* Download the `.tar.gz` file from the [Supermicro website](https://www.supermicro.com/solutions/SMS_SUM.cfm) and place it in the root directory of this repo.
+* Download the `.tar.gz` file from the [Supermicro website](https://www.supermicro.com/SwDownload/SwSelect_Free.aspx) and place it in the root directory of this repo.
 
 * Create a new debian/changelog file using the provided update.sh script:
 ```sh
