@@ -1,7 +1,7 @@
 Source: supermicro-update-manager
 Section: admin
 Priority: optional
-Maintainer: Casper Langemeijer <casper@langemeijer.eu>
+Maintainer: Your Name Here <root@localhost>
 Build-Depends: debhelper (>= 5), devscripts, libdistro-info-perl
 Standards-Version: 3.8.4
 Homepage: https://www.supermicro.com/solutions/SMS_SUM.cfm
@@ -10,7 +10,7 @@ Package: supermicro-update-manager
 Architecture: amd64
 Depends: libc6
 Recommends: fonts-dejavu-core, fonts-freefont-otf, ttf-bitstream-vera, fonts-cantarell, fonts-droid, ttf-mscorefonts-installer
-Description: Proprietary command-line utility to manager Supermicro IPMI BMCs
+Description: Proprietary command-line utility to manage Supermicro IPMI BMCs
  Supermicro Update Manager (SUM) can be used to manage the firmware and
  configuration for Supermicro X9 (Romley), X10, B10, X11, B11, H11 generation
  motherboards. SUM is a command line interface utility that can execute
