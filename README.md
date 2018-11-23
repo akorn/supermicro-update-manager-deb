@@ -44,7 +44,7 @@ Installing
 Install the package with the `dpkg` command:
 
 ```sh
-dpkg -i ipmiview...
+dpkg -i supermicro-update-manager...
 ```
 
 Alternatively, you can create your own [simple repo](https://wiki.debian.org/DebianRepository/HowTo/TrivialRepository) or 
