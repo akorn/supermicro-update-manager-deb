@@ -27,6 +27,8 @@ Building
 
 * Download the `.tar.gz` file from the [Supermicro website](https://www.supermicro.com/SwDownload/SwSelect_Free.aspx) and place it in the root directory of this repo.
 
+* Edit `debian/control`; enter your own name and email address in the `Maintainer:` field.
+
 * Create a new debian/changelog file using the provided update.sh script:
 ```sh
 ./update.sh
